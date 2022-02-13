@@ -1,0 +1,13 @@
+@mixin flexprob($dir:row,$justi:flex-start,$alig:flex-start) {
+    display: flex;
+    flex-direction: $dir;
+    flex-wrap: nowrap;
+    justify-content: $justi;
+    align-items: $alig;
+}
+
+@mixin gridprob($col:auto,$row:auto) {
+    display: grid;
+    grid-template-columns: $col;
+    grid-template-rows: $row;
+}

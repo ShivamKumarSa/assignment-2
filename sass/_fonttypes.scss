@@ -1,0 +1,24 @@
+@import "font";
+@import "var";
+@import "fontSize";
+@import "space";
+
+@mixin fontdes($ftype:$fontprimary,$fweight:600,$fsize:$textlg,$fline:$spacemd,$falign:justify,$fcolor:$primary1) {
+    font: {
+        family:$ftype;
+        weight:$fweight;
+        size:$fsize;
+        style: normal;   
+    };
+    line-height: $fline;
+    text-align: $falign;
+    color: $fcolor;
+}
+
+h1{
+    @include fontdes($fweight:700,$fsize:$textxl ,$fline:$spacexl ,$fcolor:$secondry1 );
+}
+
+h2{
+    @include fontdes();
+}

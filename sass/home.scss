@@ -1,0 +1,436 @@
+@import "reset";
+@import "mixxin";
+@import "fonttypes";
+
+
+
+//--------------------------
+//  structure of the layout
+//--------------------------
+
+.content{
+    @include gridprob($col:1fr 15fr);
+    //height: 695px;
+     & > div {
+        grid-area: 1 / 2 / 2 / 3;
+        @include gridprob($row: 1fr 11fr );
+        header{
+            border-bottom: 1.22px solid #F5F3FB;
+        }
+        main{
+            display: grid; grid-template-columns: 12fr 4fr;
+            section{
+                background-color: #FAFAFE;
+                padding: 20px 10px 5px 10px;  
+                @include flexprob($dir:column,$justi:space-between);
+                .part1{
+                    flex: 45%;
+                    display: flex; justify-content: space-between;flex-wrap: nowrap;
+                    width: 100%;
+                    padding-bottom: 25px;
+                    .part1a{ flex: 50%;padding: 15px;height: 100%;width: 100%; }
+                    .part1b{ flex: 50%;padding: 15px;height: 100%;width: 100%; }
+                }
+                .part2{
+                    flex: 55%;
+                    display: flex; justify-content: space-between;flex-wrap: nowrap;
+                    width: 100%;
+                    .part2a{ flex: 25%;padding: 15px;width: 100%; }
+                    .part2b{ flex: 75%;padding: 15px;width: 100%; }
+                }
+            }
+            aside{
+                border-left: 1.22px solid #F5F3FB;
+                padding: 35px 20px 20px 20px;
+            }
+        }
+    }
+    nav{
+        grid-area: 1 / 1 / 2 / 2;
+        border-right: 1.22px solid #F5F3FB;
+    }
+}
+
+//-------------------------
+//        header
+//-------------------------
+header{
+    @include flexprob($justi:space-between,$alig:center);
+    padding: 0 80px 0 25px;
+    div{
+        @include flexprob($justi:center,$alig:center);
+        #userimg{ height: 30px; padding-left:80px;}
+        span{
+            @include fontdes($ftype:$fontsecondry,$fsize:$textmd,$fline:$spacexl,$fcolor:$primary3);
+            padding-left: 10px;
+        }
+    }
+}
+
+//--------------------------
+// heading all sections part
+//--------------------------
+.part1a > div:first-child , .part1b > div:first-child , .part2a > div:first-child , .part2b > div:first-child { 
+    @include flexprob($justi:space-between); 
+    span{ @include fontdes();
+    padding-bottom: 15px;}
+}
+.part2b > div:first-child{ 
+    a{ text-decoration: none;padding:5px 7px; background-color: $primary2;border-radius: 50%;}
+    #arrow2{  background-color: #7942FB; }
+}
+
+
+//-------------------------
+//  part1a i.e. section 1st 
+//-------------------------
+.part1a > div:last-child{
+    position: relative;
+    height: 100%;
+    svg{border-radius: 5px;}
+   
+    & > div{
+        position: absolute;
+        top: 5px;
+        left:0px;
+        padding:15px 15px 25px;
+        width: 100%;
+        height: 100%;
+        @include flexprob($dir:column,$justi:space-between);
+        & > div:first-child{
+            span{padding: 5px 13px;border-radius: 10px;background: rgba(255, 255, 255, 0.4);
+                @include fontdes($fweight:700,$fcolor:$primary2,$fsize:$textmd,$fline:$spacemd);
+            }
+        }
+        & > div:last-child{
+            width: 100%;
+            @include flexprob($justi:space-between,$alig:flex-end);
+            div{
+                h6{ @include fontdes($fweight:700,$fcolor:$primary2,$fsize:$textxll,$fline:$spacexxl);margin-bottom: 7px; }
+                span{ @include fontdes($ftype:$fontsecondry,$fweight:600,$fcolor:$primary2,$fsize:$textlg,$fline:$spacelg); }
+                p{
+                    margin-top: 5px;
+                    @include fontdes($ftype:$fontsecondry,$fweight:500,$fcolor:$primary2,$fsize:$textlg,$fline:$spacemd);
+                }
+                img{height: 10px;margin: 0;}
+
+
+            }
+            & > div:last-child{
+                img:first-child{ border-radius: 50%;}
+                img{height: 30px;margin:0 8px;}
+            }
+        }
+    }
+}
+
+
+
+//-------------------------
+//  part1b i.e. section 2nd 
+//-------------------------
+.part1b > div:last-child{
+    @include flexprob($justi:space-between);
+    background-color: $primary2;
+    padding: 10px 20px ;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    & > div:first-child{
+        height: 100%;
+        flex: 50%;
+        @include flexprob($dir:column,$justi:space-between);
+        & > div{
+            flex: 33%;
+            @include flexprob($alig:center);
+            & > img{height: 50px;padding: 15px;border-radius: 5px;margin-right: 10px; }                                  
+            & > div{
+                h4{
+                    @include fontdes($fweight:500,$fsize:$textlg,$fline:$spacelg);  
+                }
+                img{height: 20px;}
+                span{
+                    @include fontdes($ftype:$fontsecondry,$fweight:600,$fsize:$textxl,$fline:$spacexxxl,$fcolor:$primary4);
+                }
+            }
+        }
+    }
+
+    & > div + div:not(:last-child){
+        height: 100%;
+        z-index:1; 
+        width:20%;
+        border-top: 1px solid #F5F5F5;
+        border-bottom: 1px solid #F5F5F5;
+        position: relative;
+        &::before{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 25%;
+            border-bottom: 1px solid #F5F5F5;
+            z-index: -1;
+        }
+        &::after{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 25%;
+            border-bottom: 1px solid #F5F5F5;
+            border-top: 1px solid #F5F5F5;
+            bottom: 20%;
+            left: 0;
+            z-index: -1;
+        }
+        & > div{
+            margin: 0 8%;
+            width: 8%;
+            height: 99%;
+            border-radius: 5px;
+            background-color: #F6F6FA;
+            display: inline-block;
+            position: relative;
+            & > div{
+                width: 100%;
+                border-radius: 5px;
+                position: absolute;
+                bottom: 0;
+            }
+        }
+    }
+
+    & > div:last-child{  
+        padding-left: 20px;
+        height: 100%;
+        @include flexprob($dir:column,$justi:space-between,$alig:flex-start);
+        span{
+            @include fontdes($fweight:600,$fsize:$textmd,$fline:$spacesm,$fcolor:$primary4);
+        }
+    }
+}
+
+
+
+//-------------------------
+//  part2a i.e. section 3rd 
+//-------------------------
+.part2a > div:last-child{
+    @include flexprob($dir:column,$justi:space-between);
+    & > div + *{margin-top: 15px;}
+    & > div{
+        flex: 25%;
+        width: 100%;
+        background-color: $primary2;
+        padding: 8px 6px;
+        border-radius: 5px;
+        @include flexprob($justi:space-between,$alig:center);
+        & > div:first-child{
+            span{
+                @include fontdes($fweight:400,$fsize:$textmd,$fline:$spacemd);
+                padding-bottom: 15px;
+            }
+            h5{
+                @include fontdes($ftype:$fontsecondry,$fweight:800,$fsize:$textxl,$fline:$spacexxl);
+                img{ height: 15px;}
+            }
+        }
+        & > div:last-child{    
+            p{
+                @include fontdes($ftype:$fontsecondry,$fweight:700,$fsize:$textmd,$fline:$spacenm);
+            }
+            svg{ height: 30px;width: 40px;}
+        }
+    }
+}
+
+
+//-------------------------
+//  part2b i.e. section 4th 
+//-------------------------
+
+.part2b > div:last-child{
+    @include flexprob($dir:column,$justi:space-between);
+    & > div:first-child{
+        overflow-x: hidden;
+        flex: 30%;
+        width: 100%;
+        & > div{
+            width: 130%;
+            @include flexprob($justi:space-between,$alig:center);
+            & > div{
+                flex: 30%;
+                padding: 8px;
+                width: 100%;
+                margin-right: 20px;
+                border-radius: 6px;
+                background-color: $primary2;
+                @include flexprob($alig:flex-end);
+                img{height: 55px;border-radius: 8px;}
+                div{
+                    margin-left: 20px;
+                    h5{ @include fontdes($fweight:700,$fsize:$textlg,$fline:$spacemd); margin-bottom: 10px;}
+                    span{ @include fontdes($ftype:$fontsecondry,$fweight:600,$fsize:$textxxl,$fline:$spacexxl,$fcolor:$primary4); }
+                    img{ height: 20px;border-radius: 0px;}
+                }
+            }
+        }
+    }
+    & > div:last-child{
+        flex:70%;
+        @include flexprob($dir:column);
+        margin-top: 15px;
+        padding: 20px 0 10px 20px;
+        width: 100%;
+        border-radius: 7px;
+        background-color: $primary2;
+        h5{ @include fontdes();padding-bottom: 8px;}
+        & > div{ width: 95%;}
+        canvas{ width:100%;max-height: 180px;}
+        & > div:last-child{
+            
+            margin-top: -45px;
+            @include flexprob($justi:center);
+            span{
+                @include fontdes($ftype:$fontsecondry,$fsize:$textmd,$fline:$spacexl,$fcolor:$primary3);
+                padding: 0 28px;
+            }
+        }
+    }
+}
+
+
+
+//-------------------------
+//         aside
+//-------------------------
+aside{
+    & > span{ @include fontdes();padding: 0 10px;}
+}
+.aside1{
+    margin: 15px;
+    & > div{
+        margin-left: 10px;
+        width: 95%;
+        height: 160px;
+        background: rgba(239, 232, 255, 0.95);
+        border-radius: 9.8px;
+         & > div{
+            margin-left: -2%;
+            width: 105%;
+            height: 150px;
+            background: linear-gradient(68.24deg, #7942FB -3.47%, #B091F9 103.83%);
+            border-radius: 9.8px;
+            & > div{
+                padding: 10px;
+                @include flexprob($dir:column,$justi:space-between);
+                span{ @include fontdes($fsize:$textlg,$fline:$spacelg,$fcolor:$primary2); }
+                h3{ @include fontdes($ftype:$fontsecondry,$fweight:800,$fsize:$textxxxl,$fline:$spacexxxxl,$fcolor:$primary2);
+                    padding:10px 0px 25px 0;
+                }
+                h4{ @include fontdes($ftype:$fontsecondry,$fweight:600,$fsize:$textxxl,$fline:$spacexxxl,$fcolor:$primary2);
+                }
+                & > div{
+                    @include flexprob($justi:space-between,$alig:flex-end);
+                    width: 100%;padding:0px;
+                    span{
+                        padding: 3px 5px;
+                        border-radius: 15%;
+                        background-color:rgba(255,255,255,0.3); 
+                    }
+                }
+            }
+        }
+    }
+}
+.aside2{
+    @include flexprob($justi:center,$alig:center);
+    a{
+        margin: 0 5px;
+    }
+    margin-bottom: 50px;
+}
+.aside3{
+    padding: 0  10px;
+    @include flexprob($justi:space-between);
+    span{ @include fontdes(); }
+}
+.aside4{
+    @include flexprob($dir:column,$justi:space-between);
+    & > div{
+        flex: 20%;
+        @include flexprob($justi:space-between,$alig:center);
+        margin: 20px 10px 5px 10px;
+        padding-left: 10px;
+        width: 92%;
+        & > div{
+            flex: 90%;
+            h5{ @include fontdes($fweight:800,$fsize:$textmd,$fline:$spacexxl);}
+            & > div{
+                @include flexprob($justi:space-between,$alig:flex-end);
+                span{flex: 50%;
+                    @include fontdes($ftype:$fontsecondry,$fsize:$textmd,$fline:$spacelg,$fcolor:$primary3);
+                }
+            }
+        }
+    }
+}
+
+
+
+//--------------------------
+//         navbar
+//--------------------------
+
+nav{
+    @include flexprob($dir:column,$justi:space-between,$alig:center);
+    width: 100%;
+    a{ padding: 20px 35px; }
+    div{
+        @include flexprob($dir:column,$justi:center,$alig:center);
+        width: 100%;
+        #nav1{ padding:20px 30px 30px 30px ;pointer-events: none; }
+        #nav2{ border-left: 2px solid #ED5B75;
+            path{fill: #7942FB;}
+        }
+        a{
+            &:hover  {
+                border-left: 2px solid #ED5B75;
+                path{fill:#7942FB;}
+            }
+        }
+    }
+    #navlast{ path{ fill:#7942FB;}}
+}
+
+
+
+
+//---------------------------------
+//          media query
+//---------------------------------
+@media screen and (max-width:1200px){
+    .part1{ 
+        flex-direction: column;
+    }
+    .part1a{margin-bottom: 25px;}
+    .part2{ 
+        flex-direction: column; 
+   }
+   .content > div > main{ grid-template-columns: 3fr 2fr ;}
+}
+
+@media screen and (max-width:992px) {
+    .content > div > main{ grid-template-columns: auto;}
+}
+
+@media screen and (max-width:768px) {
+    .content{display: block;}
+    nav{ 
+        a{ padding:20px;}
+        flex-direction: row;border-top: 1.22px solid #F5F3FB; 
+        div{ 
+            flex-direction: row;justify-content: flex-start; 
+            #nav1{ padding: 20px 35px; } 
+        } 
+    } 
+}
